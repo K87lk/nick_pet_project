@@ -24,6 +24,7 @@ public class Group {
     private int studentCount;
 
 
+/*
     @OneToMany(mappedBy = "group")
     private Collection<Students> students;
 
@@ -34,4 +35,5 @@ public class Group {
     public void setStudents(Collection<Students> students) {
         this.students = students;
     }
+*/
 }
