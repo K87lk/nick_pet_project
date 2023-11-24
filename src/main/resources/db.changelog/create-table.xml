@@ -1,0 +1,36 @@
+<databaseChangeLog  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+   <changeSet id="v1-1" author="nick">
+       <createTable tableName="group">
+           <column name="id" type="int" >
+               <constraints primaryKey="true"/>
+           </column>
+           <column name="group_number" type="varchar(10)">
+               <constraints nullable="false" unique="true"/>
+           </column>
+           <column name="student_count" type="int" >
+               <constraints nullable="false"/>
+           </column>
+       </createTable>
+   </changeSet>
+    
+    <changeSet id="v1-2" author="nick">
+        <createTable tableName="students">
+            <column name="id" type="int">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="enroll_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="full_name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="group_id" type="int">
+                <constraints foreignKeyName="fk_student_group" references="group(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
